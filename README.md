@@ -110,37 +110,13 @@ Executes 24 automated checks covering health probes, public catalog APIs, zero-e
 
 ---
 
-## 🚀 CI/CD & Multi-Environment Deployment
+## 🚀 Continuous Integration (CI)
 
-KANGAYATH WEB operates an automated, test-gated CI/CD pipeline targeting **Render** via **GitHub Actions**:
+This repository includes an automated GitHub Actions CI pipeline (`.github/workflows/ci.yml`) to ensure rigorous code quality on every branch and pull request:
 
-```text
-feature/* ──(PR)──> staging ──(Render Staging)──> main ──(Render Production)
-```
-
-| Environment | Branch | Web Application | Backend API | Database |
-|---|---|---|---|---|
-| **Staging** | `staging` | https://kangayath-web-staging.onrender.com | https://kangayath-api-staging.onrender.com | `kangayath-db-staging` |
-| **Production** | `main` | [https://www.kangayath.site](https://www.kangayath.site) | [https://api.kangayath.site](https://api.kangayath.site) | `kangayath-db-prod` |
-
-Complete documentation:
-- **Deployment Guide**: [docs/deployment.md](docs/deployment.md)
-- **Testing Strategy**: [docs/testing.md](docs/testing.md)
-- **Development Workflows**: [docs/development.md](docs/development.md)
-
----
-
-## 🚢 Production Deployment
-
-See [docs/deployment.md](docs/deployment.md) for complete deployment instructions.
-
-```bash
-# Quick production deploy via Docker Compose:
-docker compose -f docker-compose.production.yml up -d --build
-
-# Run post-deployment smoke test:
-./scripts/smoke-test.sh
-```
+- **Backend Quality**: Ruff linting & format checks, Mypy static typing, Pytest test suite executed against an isolated PostgreSQL container.
+- **Frontend Quality**: ESLint, TypeScript compilation, Vitest test suite, and Next.js production build verification.
+- **Container Verification**: Automated Docker image builds for both API and Web services.
 
 ---
 
@@ -153,11 +129,9 @@ All operational and maintenance scripts reside in `scripts/`:
 | `scripts/dev.ps1` | PowerShell | Checks Docker and launches local dev stack |
 | `scripts/test.ps1` | PowerShell | Runs complete lint, typecheck, and test suites |
 | `scripts/smoke-test.sh` | Bash | 24-point end-to-end health and smoke verification suite |
-| `scripts/clone_db.ps1` | PowerShell | Securely clones Production database to Staging |
 | `scripts/backup.sh` | Bash | Automated PostgreSQL schema and data backup |
 | `scripts/restore.sh` | Bash | Validated PostgreSQL database restore utility |
-| `scripts/deploy.sh` | Bash | Production deployment execution script |
-| `scripts/wait-for-render-deploy.sh` | Bash | Polls Render API until deployment completes |
+| `scripts/deploy.sh` | Bash | Local production Docker Compose deployment script |
 
 ---
 

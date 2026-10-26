@@ -92,7 +92,7 @@ The repository includes a declarative `render.yaml` blueprint defining the compl
 
 1. Log in to [Render Dashboard](https://dashboard.render.com).
 2. Click **New +** $\to$ **Blueprint**.
-3. Connect the repository `kangayathtextiles/onlineStore`.
+3. Connect the repository `abinkr85/digital-showroom`.
 4. Render will automatically detect `render.yaml` and provision both Staging and Production databases and web services with matching branch tracking.
 
 ---
