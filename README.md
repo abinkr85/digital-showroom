@@ -6,6 +6,20 @@ Digital showroom and product-discovery platform for Kangayath Clothing Store —
 
 ---
 
+## 🌐 Live Showcase & Demo Links
+
+Visit the live deployment to explore and test the platform:
+
+- 🛍️ **Customer Digital Showroom**: [https://www.kangayath.site](https://www.kangayath.site)
+- 🔐 **Admin Control Center**: [https://www.kangayath.site/admin](https://www.kangayath.site/admin)
+
+> [!NOTE]
+> **Access & Security Policy**:
+> - The **Digital Showroom** is public for all visitors to explore the product catalog, category filters, product details, and store location information.
+> - The **Admin Control Center** is a protected area. For production security, all administrative credentials and secrets remain strictly confidential and protected by session authentication.
+
+---
+
 ## 🏛️ Project Governance & Architecture
 
 - **Engineering Constitution**: [docs/GOVERNANCE.md](docs/GOVERNANCE.md)
@@ -56,14 +70,14 @@ docker compose up
 ```
 
 ### Endpoints
-| Service | URL | Notes |
-|---|---|---|
-| Customer Website | http://localhost:3000 | Public Showroom & Product Catalog |
-| Admin Login Portal | http://localhost:3000/admin/login | Admin Authentication |
-| Admin Dashboard | http://localhost:3000/admin | Protected Control Center (Requires Session) |
-| API Server | http://localhost:8000 | FastAPI Application |
-| API Documentation | http://localhost:8000/docs | Swagger UI (development only) |
-| Health Check | http://localhost:8000/health | Liveness & Connection Pool Probe |
+| Service | Local Dev | Production (Live) | Notes |
+|---|---|---|---|
+| Customer Showroom | `http://localhost:3000` | [https://www.kangayath.site](https://www.kangayath.site) | Public Showroom & Product Catalog |
+| Admin Login Portal | `http://localhost:3000/admin/login` | [https://www.kangayath.site/admin/login](https://www.kangayath.site/admin/login) | Admin Authentication Portal |
+| Admin Dashboard | `http://localhost:3000/admin` | [https://www.kangayath.site/admin](https://www.kangayath.site/admin) | Protected Control Center (Requires Session) |
+| API Server | `http://localhost:8000` | `https://api.kangayath.site` | FastAPI Application |
+| API Documentation | `http://localhost:8000/docs` | *(Disabled in Prod)* | Swagger UI (development only) |
+| Health Check | `http://localhost:8000/health` | `https://api.kangayath.site/health` | Liveness & Connection Pool Probe |
 
 ---
 
@@ -107,7 +121,7 @@ feature/* ──(PR)──> staging ──(Render Staging)──> main ──(Re
 | Environment | Branch | Web Application | Backend API | Database |
 |---|---|---|---|---|
 | **Staging** | `staging` | https://kangayath-web-staging.onrender.com | https://kangayath-api-staging.onrender.com | `kangayath-db-staging` |
-| **Production** | `main` | https://kangayath-web.onrender.com | https://kangayath-api.onrender.com | `kangayath-db-prod` |
+| **Production** | `main` | [https://www.kangayath.site](https://www.kangayath.site) | [https://api.kangayath.site](https://api.kangayath.site) | `kangayath-db-prod` |
 
 Complete documentation:
 - **Deployment Guide**: [docs/deployment.md](docs/deployment.md)
